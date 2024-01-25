@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indice de Pruebas del Boot Camp de Free Codecamp</title>
+    <script src="./js/funciones.js"></script>
+</head>
+
+<style>
+    .caja-ctral {
+        text-align: center;
+        border: 1px solid blue;
+        border-radius: 5px;
+        width: 30%;
+        margin: 0 auto;
+        /* Esto centra horizontalmente */
+    }
+
+    .caja {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border: 1px solid 5px;
+        color: blue;
+        padding: 10px;
+    }
+
+    .caja h4 {
+        text-align: center;
+    }
+
+    .caja input {
+        border: 1px dotted gray;
+        text-align: center;
+        font-size: larger;
+    }
+
+    .form-btn {
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    .form-btn:hover {
+        border: 1px solid green;
+        color: green;
+        background-color: white;
+    }
+
+    .form-btn:active {
+        border: 1px solid blue;
+        color: blue;
+        background-color: violet;
+    }
+
+    #palindrome {
+        margin-bottom: 5px;
+    }
+    #rsltPalindrome{
+        font-size: x-large;
+        font-weight:600;
+    }
+    .poweredBy{
+        text-align: end;
+        
+    }
+</style>
+
+<body>
+    <main>
+        <div class="caja-ctral">
+            <p>
+            <h1>Check de palíndromos</h1>
+            </p>
+            <div class="caja">
+                <form action="" method="get">
+                    <p>
+                    <h4>Ingrese el texto a chequear</h4>
+                    </p>
+                    <input type="text" name="palindrome" id="palindrome" placeholder="Ingresa aquí tu palíndromo" required>
+                    <br><br>
+                    <input type="submit" class="form-btn" value="Verificar Palíndromo" onclick="verificarPalindromo()">
+                    <br><br>
+                    <label for="rsltPalindrome" id="rsltPalindrome">- - -</label>
+                    <br><br>
+                    <marquee direction="left" behavior="scroll" scrollamount="5">
+                        Powered by Fernando Martin Gan,   Full Stack Developer.
+                    </marquee>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function verificarPalindromo() {
+            event.preventDefault();
+            // Aquí debes agregar el código JavaScript para verificar el palíndromo.
+            // Puedes obtener el valor del input con document.getElementById("palindrome").value
+            // y luego realizar la verificación.
+            // Eliminar caracteres no alfanuméricos y convertir a minúsculas
+            var vwordcheck = document.getElementById("palindrome").value;
+
+            if (vwordcheck=='') {
+                alert('No ha completado los campos requeridos, verifique e intente nuevamente.');
+                return;
+            }
+
+            const cleanedStr = vwordcheck.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+            // Comparar la cadena original con la cadena invertida
+            const reversedStr = cleanedStr.split('').reverse().join('');
+
+            var resultado = ( cleanedStr === reversedStr ? `${vwordcheck} (SI) es un palíndromo` : `${vwordcheck} (NO) es un palíndromo` ) ;
+            console.log(resultado);
+            // alert(resultado);
+            // O mostrarlo en un elemento HTML específico
+            document.getElementById("rsltPalindrome").textContent = resultado;
+        }
+    </script>
+</body>
+
+</html>
